@@ -73,6 +73,7 @@ impl std::error::Error for ParseError {}
 
 // Wraps an `Option<T>`, but `fmt::Debug` will only render `Some` values and
 // panics on others.
+//made a change
 struct SomeFmtOption<T>(Option<T>);
 
 impl<T: fmt::Debug> fmt::Debug for SomeFmtOption<T> {
@@ -83,7 +84,7 @@ impl<T: fmt::Debug> fmt::Debug for SomeFmtOption<T> {
 
 impl fmt::Debug for ParseError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        let mut f = f.debug_struct("ParseError");
+        let mut f = f.debug_struct("ParseError ");
         f.field("kind", &self.kind);
         if self.parse_depth > 0 {
             let mut locations = [
